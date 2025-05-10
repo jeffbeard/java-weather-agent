@@ -1,0 +1,33 @@
+# Git ignore file for a Spring Boot Gradle project
+
+# Gradle build folders
+.gradle/
+build/
+
+# Do not ignore the Gradle wrapper jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+*.iml
+/.idea/
+/out/
+
+# Visual Studio Code
+.vscode/
+
+# Eclipse IDE
+.classpath
+.project
+/.settings/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files and folders
+tmp/

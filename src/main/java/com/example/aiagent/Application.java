@@ -23,7 +23,8 @@ public class Application implements CommandLineRunner {
     public void run(String... args) {
         if (args.length < 1) {
             System.err.println("Usage: java -jar ai-agent.jar \"<prompt>\"");
-            System.exit(1);
+            exit(1);
+            return;
         }
         String prompt = args[0];
         String sanitizedPrompt = sanitizePrompt(prompt);
@@ -43,5 +44,18 @@ public class Application implements CommandLineRunner {
             sanitized = sanitized.substring(0, 1000);
         }
         return sanitized;
+    }
+    /**
+     * Exit the application with the given status code. Protected for testing.
+     */
+    protected void exit(int status) {
+        System.exit(status);
+    }
+
+    /**
+     * Setter for AIService, for testing purposes.
+     */
+    void setAiService(com.example.aiagent.service.AIService aiService) {
+        this.aiService = aiService;
     }
 }

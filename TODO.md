@@ -5,7 +5,7 @@ This file lists pending tasks and features for the ai-agent project.
 
 - [x] Integrate `OpenAIService.getCompletion` with the real OpenAI HTTP API using the configured API key (e.g., via Spring WebClient), parse the JSON response, and return the generated text.
 - [x] Write unit/integration tests for `OpenAIService` HTTP integration (mock WebClient or use WireMock).
-- [ ] Add a Spring Boot Test or use `ApplicationContextRunner` to verify that when `openai.api.key` is set, the `AIService` bean is instantiated as `OpenAIService`.
+- [x] Add a Spring Boot Test or use `ApplicationContextRunner` to verify that when `openai.api.key` is set, the `AIService` bean is instantiated as `OpenAIService`.
 - [ ] Update CLI prompt handling to accept multiple command-line arguments (join `args[]` into a single prompt) and add tests covering multi-word prompts.
 - [ ] Implement clear error handling for missing or invalid API key: detect absence or invalid format early, print a descriptive "missing OPENAI_API_KEY" or "invalid API key" message, and add tests for these scenarios.
 - [ ] Expose OpenAI API parameters (`model`, `temperature`, `max_tokens`) via command-line flags or Spring properties with sensible defaults; update tests and documentation accordingly.

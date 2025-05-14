@@ -16,7 +16,20 @@ public class Application implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(Application.class);
         app.setBannerMode(Banner.Mode.OFF);
-        app.run(args);
+        try {
+            app.run(args);
+        } catch (Exception ex) {
+            Throwable cause = ex;
+            while (cause != null) {
+                if (cause instanceof IllegalStateException
+                    && cause.getMessage().contains("Missing OpenAI API key")) {
+                    System.out.println("Error: " + cause.getMessage());
+                    System.exit(1);
+                }
+                cause = cause.getCause();
+            }
+            throw ex;
+        }
     }
 
     @Override

@@ -1,7 +1,7 @@
 # Global Git/GH conventions
 - Always branch off `main` (never work directly on `main`).
 - Follow [Conventional Commits] (https://www.conventionalcommits.org/en/v1.0.0/) specification for commits and branches
-- Branch names should be `feature/<short-name>` or `bugfix/<short-name>`. Committ prefix ptions are limited to:
+- Branch names should be `feature/<short-name>` or `bugfix/<short-name>`. Committ prefix options are limited to:
     * feature
     * bugfix
     * chore

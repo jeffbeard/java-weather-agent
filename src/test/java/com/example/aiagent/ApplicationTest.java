@@ -1,10 +1,14 @@
 package com.example.aiagent;
 
+import com.example.aiagent.service.AIService;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 class ApplicationTest {
 
@@ -56,5 +60,22 @@ class ApplicationTest {
         String result = sanitize(input);
         assertEquals(1000, result.length());
         assertTrue(result.chars().allMatch(c -> c == 'x'));
+    }
+
+    @Test
+    void joinsMultipleArgumentsIntoSinglePrompt() {
+        // Given
+        Application app = new Application();
+        AIService mockAiService = mock(AIService.class);
+        app.setAiService(mockAiService);
+        String[] args = {"hello", "world", "how", "are", "you"};
+
+        // When
+        app.run(args);
+
+        // Then
+        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+        verify(mockAiService).getCompletion(captor.capture());
+        assertEquals("hello world how are you", captor.getValue());
     }
 }

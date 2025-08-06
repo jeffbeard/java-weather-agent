@@ -35,11 +35,11 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (args.length < 1) {
-            System.err.println("Usage: java -jar ai-agent.jar \"<prompt>\"");
+            System.err.println("Usage: java -jar ai-agent.jar <prompt>");
             exit(1);
             return;
         }
-        String prompt = args[0];
+        String prompt = String.join(" ", args);
         String sanitizedPrompt = sanitizePrompt(prompt);
         System.out.println("Sending sanitized prompt: " + sanitizedPrompt);
 
